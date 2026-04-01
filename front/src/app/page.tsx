@@ -22,6 +22,13 @@ const recommendations = [
 export default function Home() {
   const [showRecommendations, setShowRecommendations] = useState(false);
 
+  const handleShowRecommendations = () => {
+    setShowRecommendations(true);
+    if (typeof window !== 'undefined') {
+      window.history.replaceState(null, '', '#recommendations');
+    }
+  };
+
   useEffect(() => {
     const checkHash = () => {
       setShowRecommendations(window.location.hash === '#recommendations');
@@ -48,9 +55,9 @@ export default function Home() {
               <Link href="/productos" className="btn btn--primary">
                 Ver Productos
               </Link>
-              <Link href="/#recommendations" className="btn btn--outline">
+              <button type="button" onClick={handleShowRecommendations} className="btn btn--outline">
                 Recomendaciones
-              </Link>
+              </button>
             </div>
           </div>
           <div className="hero-senior__image-container">
