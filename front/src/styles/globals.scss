@@ -1,0 +1,560 @@
+@use "./variables" as *;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $font-primary;
+    background-color: $color-background;
+    color: $color-text;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+h1,
+h2,
+h3 {
+    color: $color-dark-green;
+    margin-bottom: 1rem;
+}
+
+// --- BUTTONS ---
+.btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+    font-size: 1rem;
+
+    &--primary {
+        background-color: $color-green;
+        color: $color-white;
+
+        &:hover {
+            background-color: $color-dark-green;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(27, 67, 50, 0.2);
+        }
+    }
+
+    &--secondary {
+        background-color: $color-brown;
+        color: $color-white;
+
+        &:hover {
+            box-shadow: 0 10px 20px rgba(111, 78, 55, 0.2);
+            transform: scale(1.05);
+        }
+    }
+
+    &--outline {
+        border: 2px solid $color-green;
+        color: $color-green;
+        background: transparent;
+
+        &:hover {
+            background: $color-green;
+            color: $color-white;
+        }
+    }
+}
+
+// --- NAVBAR ---
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 0.75rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+    }
+
+    &__logo-wrapper {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid $color-green;
+        position: relative;
+        padding: 2px;
+        background: white;
+    }
+
+    &__logo-img {
+        border-radius: 50%;
+    }
+
+    &__brand-name {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: $color-green;
+        letter-spacing: -0.5px;
+    }
+
+    &__menu {
+        display: flex;
+        gap: 2.5rem;
+        font-weight: 600;
+
+        a {
+            font-size: 0.95rem;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: $color-green;
+                transition: width 0.3s ease;
+            }
+
+            &:hover {
+                color: $color-green;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+// --- HERO SENIOR ---
+.hero-senior {
+    padding: 8rem 0;
+    background: radial-gradient(circle at top right, $color-light-green 0%, $color-white 70%);
+    position: relative;
+    overflow: hidden;
+
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    &__text {
+        h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, $color-dark-green, $color-brown);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    &__tagline {
+        font-size: 1.4rem;
+        color: #444;
+        margin-bottom: 3rem;
+        max-width: 500px;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    &__image-blob {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        background: $color-green;
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        overflow: hidden;
+        animation: blob-morph 10s infinite alternate linear;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@keyframes blob-morph {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    100% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+}
+
+// --- FOOTER ---
+.footer {
+    background-color: #f7f9f7;
+    padding: 5rem 0 2rem;
+    margin-top: auto;
+    border-top: 1px solid #e0e6e0;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    &__logo {
+        font-size: 2rem;
+        color: $color-green;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+    }
+
+    &__brand p {
+        color: #666;
+        max-width: 350px;
+        margin-bottom: 2rem;
+    }
+
+    &__socials {
+        display: flex;
+        gap: 1.5rem;
+
+        a {
+            background: white;
+            color: $color-green;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+            &:hover {
+                background: $color-green;
+                color: $color-white;
+                transform: translateY(-5px);
+            }
+        }
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: $color-brown;
+        }
+    }
+
+    &__links ul,
+    &__contact ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #555;
+
+            a:hover {
+                color: $color-green;
+            }
+        }
+    }
+
+    &__bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #e0e6e0;
+        color: #999;
+        font-size: 0.9rem;
+    }
+}
+
+// --- WHATSAPP FAB ---
+.whatsapp-fab {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    z-index: 10000;
+
+    &__trigger {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: #25D366;
+        color: white;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &__badge {
+        position: absolute;
+        right: 80px;
+        background: white;
+        color: #333;
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+        white-space: nowrap;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        font-size: 0.85rem;
+        font-weight: 700;
+        pointer-events: none;
+        animation: fab-float 3s infinite alternate ease-in-out;
+
+        &::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-left: 8px solid white;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+    }
+
+    &__menu {
+        position: absolute;
+        bottom: 90px;
+        right: 0;
+        width: 320px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        animation: fab-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    &__header {
+        background: #25D366;
+        padding: 1.5rem;
+        color: white;
+
+        h3 {
+            color: white;
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+    }
+
+    &__list {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: 12px;
+        background: #f7f9f7;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: #e8f5e9;
+            transform: translateX(5px);
+        }
+    }
+
+    &__item-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #25D366;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__item-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item-label {
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+
+    &__item-number {
+        font-size: 0.8rem;
+        color: #777;
+    }
+}
+
+@keyframes fab-float {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes fab-pop {
+    from {
+        opacity: 0;
+        transform: scale(0.5) translateY(50px);
+        transform-origin: bottom right;
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+// --- PRODUCTS GRID SENIOR ---
+.products-hero {
+    text-align: center;
+    padding-bottom: 5rem;
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #666;
+    }
+}
+
+.products-grid-senior {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    padding-bottom: 6rem;
+}
+
+.senior-product-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s ease;
+    border: 1px solid #f0f0f0;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    &__image {
+        height: 350px;
+        position: relative;
+        background: #f9f9f9;
+    }
+
+    &__badge {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: $color-green;
+        text-transform: uppercase;
+    }
+
+    &__content {
+        padding: 2.5rem;
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #777;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__price {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: $color-brown;
+    }
+}
+
+.status-msg {
+    text-align: center;
+    font-weight: 600;
+    color: $color-green;
+}
