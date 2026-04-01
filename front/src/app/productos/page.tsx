@@ -14,7 +14,7 @@ const MOCK_PRODUCTS = [
         description: 'Fórmula enriquecida con extractos botánicos para un cabello radiante y fuerte.',
         price: 35000,
         category: 'shampoo',
-        imageUrl: '/images/producto1.jpg',
+        imageUrl: '/images/producto2.jpg',
     },
     {
         id: '2',
@@ -22,7 +22,7 @@ const MOCK_PRODUCTS = [
         description: 'Hidratación profunda y aroma relajante extraído de semillas seleccionadas.',
         price: 42000,
         category: 'oil',
-        imageUrl: '/images/producto2.jpg',
+        imageUrl: '/images/producto1.jpg',
     }
 ];
 
