@@ -37,8 +37,9 @@ export default function Home() {
 
   return (
     <div>
-      <section className="hero-senior">
-        <div className="container hero-senior__content">
+      {!showRecommendations && (
+        <section className="hero-senior">
+          <div className="container hero-senior__content">
           <div className="hero-senior__text">
             <span className="section-subtitle">Bienvenido a Nature Sumaq</span>
             <h1>Potencia tu belleza con fórmulas naturales.</h1>
@@ -65,6 +66,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {showRecommendations && (
         <section id="recommendations" className="recommendations-section container">
