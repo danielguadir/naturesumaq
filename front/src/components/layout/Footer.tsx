@@ -15,7 +15,7 @@ export default function Footer() {
                         <a href={CONTACT_INFO.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                             <Instagram />
                         </a>
-                        <a href={CONTACT_INFO.facebook} aria-label="Facebook">
+                        <a href={CONTACT_INFO.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                             <Facebook />
                         </a>
                     </div>

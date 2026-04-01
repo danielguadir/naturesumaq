@@ -4,7 +4,7 @@ export const CONTACT_INFO = {
         { number: '3233351819', label: 'Atención al Cliente' },
     ],
     instagram: 'https://www.instagram.com/naturasuma',
-    facebook: '#', // Pending specific link
+    facebook: 'https://www.instagram.com/naturasuma',
     brandName: 'Nature Sumaq',
 };
 
