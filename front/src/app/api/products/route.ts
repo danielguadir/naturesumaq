@@ -6,7 +6,7 @@ const MOCK_PRODUCTS = [
         id: '1',
         name: 'Shampoo Natural Sumaq',
         description: 'Fórmula enriquecida con extractos botánicos para un cabello radiante y fuerte.',
-        price: 35000,
+        price: 15000,
         category: 'shampoo',
         imageUrl: '/images/producto2.jpg',
     },
@@ -14,7 +14,7 @@ const MOCK_PRODUCTS = [
         id: '2',
         name: 'Aceite Esencial de la Tierra',
         description: 'Hidratación profunda y aroma relajante extraído de semillas seleccionadas.',
-        price: 42000,
+        price: 15000,
         category: 'oil',
         imageUrl: '/images/producto1.jpg',
     }
