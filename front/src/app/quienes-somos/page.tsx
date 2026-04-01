@@ -4,10 +4,10 @@ export default function QuienesSomos() {
     return (
         <section className="about-page">
             <div className="about-page__hero">
-                <div className="about-page__hero-bg">
+                <div className="about-page__hero-bg about-page__hero-bg--logo">
                     <Image
-                        src="/images/pag_inicio.jpg"
-                        alt="Hojas con gotas de agua"
+                        src="/images/logo.png"
+                        alt="Logo Nature Sumaq desenfocado"
                         fill
                         style={{ objectFit: 'cover' }}
                     />
