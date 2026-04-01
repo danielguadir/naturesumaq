@@ -3,9 +3,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+const navItems = [
+    { href: '/', label: 'Inicio' },
+    { href: '/quienes-somos', label: 'Quienes somos' },
+    { href: '/productos', label: 'Mis productos' },
+    { href: '/#recommendations', label: 'Recomendaciones' },
+];
+
 export default function Navbar() {
     return (
-        <nav className="navbar">
+        <nav className="navbar" aria-label="Main navigation">
             <div className="container navbar__content">
                 <Link href="/" className="navbar__logo-container">
                     <div className="navbar__logo-wrapper">
@@ -20,9 +27,16 @@ export default function Navbar() {
                     <span className="navbar__brand-name">Nature Sumaq</span>
                 </Link>
                 <ul className="navbar__menu">
-                    <li><Link href="/">Inicio</Link></li>
-                    <li><Link href="/quienes-somos">Quienes somos</Link></li>
-                    <li><Link href="/productos">Mis productos</Link></li>
+                    {navItems.map((item) => (
+                        <li key={item.href}>
+                            <Link
+                                href={item.href}
+                                className={`navbar__link ${item.label === 'Recomendaciones' ? 'navbar__link--cta' : ''}`}
+                            >
+                                {item.label}
+                            </Link>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </nav>
