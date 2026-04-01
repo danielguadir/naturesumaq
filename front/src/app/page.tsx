@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { RECOMMENDATIONS_HASH } from '@/lib/navigation';
 
 const recommendations = [
     {
@@ -25,13 +26,13 @@ export default function Home() {
   const handleShowRecommendations = () => {
     setShowRecommendations(true);
     if (typeof window !== 'undefined') {
-      window.history.replaceState(null, '', '#recommendations');
+      window.history.replaceState(null, '', RECOMMENDATIONS_HASH);
     }
   };
 
   useEffect(() => {
     const checkHash = () => {
-      setShowRecommendations(window.location.hash === '#recommendations');
+      setShowRecommendations(window.location.hash === RECOMMENDATIONS_HASH);
     };
 
     checkHash();

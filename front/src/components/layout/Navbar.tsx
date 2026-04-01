@@ -2,13 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-
-const navItems = [
-    { href: '/', label: 'Inicio' },
-    { href: '/quienes-somos', label: 'Quienes somos' },
-    { href: '/productos', label: 'Mis productos' },
-    { href: '/#recommendations', label: 'Recomendaciones' },
-];
+import { NAV_ITEMS } from '@/lib/navigation';
 
 export default function Navbar() {
     return (
@@ -27,7 +21,7 @@ export default function Navbar() {
                     <span className="navbar__brand-name">Nature Sumaq</span>
                 </Link>
                 <ul className="navbar__menu">
-                    {navItems.map((item) => (
+                    {NAV_ITEMS.map((item) => (
                         <li key={item.href}>
                             <Link href={item.href} className="navbar__link">
                                 {item.label}
