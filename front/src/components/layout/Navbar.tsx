@@ -29,10 +29,7 @@ export default function Navbar() {
                 <ul className="navbar__menu">
                     {navItems.map((item) => (
                         <li key={item.href}>
-                            <Link
-                                href={item.href}
-                                className={`navbar__link ${item.label === 'Recomendaciones' ? 'navbar__link--cta' : ''}`}
-                            >
+                            <Link href={item.href} className="navbar__link">
                                 {item.label}
                             </Link>
                         </li>

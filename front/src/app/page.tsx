@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 const recommendations = [
     {
@@ -17,6 +20,21 @@ const recommendations = [
 ];
 
 export default function Home() {
+  const [showRecommendations, setShowRecommendations] = useState(false);
+
+  useEffect(() => {
+    const checkHash = () => {
+      setShowRecommendations(window.location.hash === '#recommendations');
+    };
+
+    checkHash();
+    window.addEventListener('hashchange', checkHash);
+
+    return () => {
+      window.removeEventListener('hashchange', checkHash);
+    };
+  }, []);
+
   return (
     <div>
       <section className="hero-senior">
@@ -48,21 +66,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="recommendations" className="recommendations-section container">
-        <div className="recommendations-header">
-          <span className="section-subtitle">Recomendaciones</span>
-          <h2>Consejos rápidos para una rutina natural</h2>
-        </div>
-        <div className="recommendations-grid">
-          {recommendations.map((item) => (
-            <article key={item.title} className="recommendation-card">
-              <span className="recommendation-card__label">Consejo</span>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+      {showRecommendations && (
+        <section id="recommendations" className="recommendations-section container">
+          <div className="recommendations-header">
+            <span className="section-subtitle">Recomendaciones</span>
+            <h2>Consejos rápidos para una rutina natural</h2>
+          </div>
+          <div className="recommendations-grid">
+            {recommendations.map((item) => (
+              <article key={item.title} className="recommendation-card">
+                <span className="recommendation-card__label">Consejo</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="essence-section container">
         <div className="essence-grid">
