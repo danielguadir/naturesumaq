@@ -26,6 +26,12 @@ const MOCK_PRODUCTS = [
     }
 ];
 
+const whatsappPhone = '573158364172';
+const buildWhatsappLink = (productName: string) => {
+    const message = `Hola Natura Sumaq, necesito hacer este pedido: ${productName}`;
+    return `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(message)}`;
+};
+
 export default function Productos() {
     const dispatch = useDispatch<AppDispatch>();
     const { items, loading, error } = useSelector((state: RootState) => state.products);
@@ -89,7 +95,14 @@ export default function Productos() {
                                 <span className="senior-product-card__price">
                                     ${product.price?.toLocaleString()}
                                 </span>
-                                <button className="btn btn--secondary">🛒</button>
+                                <a
+                                    href={buildWhatsappLink(product.name)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn btn--secondary"
+                                >
+                                    🛒
+                                </a>
                             </div>
                         </div>
                     </div>
